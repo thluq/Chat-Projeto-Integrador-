@@ -46,6 +46,6 @@ wss.on('connection', (ws) => {
 
 app.use(express.static('public'));
 
-server.listen(8080, () => {
-    console.log('Servidor rodando na porta 8080');
+server.listen(3000, () => {
+    console.log('Servidor rodando na porta 3000');
 });
