@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Chat com Sala e Nome de Usuário</title>
+    <title>Chat</title>
 </head>
-<body>
-    <h1>Chat</h1>
-    
+<body>    
     <div class="login-form">
         <input type="text" id="username" placeholder="Digite seu nome" required>
         <input type="text" id="room" placeholder="Digite a sala" required>
@@ -42,10 +40,10 @@
             }
 
             document.querySelector('.login-form').style.display = 'none';
-            document.getElementById('chatTitle').innerText = `Chat na sala ${room}`;
+            document.getElementById('chatTitle').innerText = `${room}`;
             document.getElementById('chatWindow').style.display = 'flex';
 
-            ws = new WebSocket('ws://localhost:8080');
+            ws = new WebSocket('ws://localhost:3000');
 
             ws.onopen = () => {
                 ws.send(JSON.stringify({ type: 'join', room: room, username: username }));
@@ -81,6 +79,13 @@
             document.getElementById('chatWindow').style.display = 'none';
             ws.close();
         }
+
+        document.querySelector('.chat-header').addEventListener('click', function() {
+    const chatWindow = document.querySelector('.chat-window');
+    chatWindow.classList.toggle('collapsed');
+});
+
+        
     </script>
 </body>
 </html>
